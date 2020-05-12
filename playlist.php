@@ -56,6 +56,7 @@
       $gd = new GoogleDrive($client_id,$client_secret,array('drive',  'drive.file', 'userinfo.email', 'userinfo.profile'),$WEB_URL . '/playlist.php',$_GET['id']);
       header('Location:' . $gd->RequestAuthCode());
     } else {
+      http_response_code(201);
       die('Invalid Request!');
     }
 

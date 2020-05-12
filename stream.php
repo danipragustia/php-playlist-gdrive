@@ -26,7 +26,13 @@ if($response_code == '200') {
   $object = json_decode(str_replace(')]}\'', '', $response));
   if(isset($object->downloadUrl)) {
     header('Location:'.$object->downloadUrl);
+  } else {
+	  http_response(404);
+	  die('Not found');
   }
+} else {
+	http_response_code(403);
+	die('Forbidden')
 }
 
 ?>

@@ -1,6 +1,6 @@
 <?php
   require 'gdrive.php';
-
+  set_time_limit(0);
   error_reporting(0);
   $GAPIS = 'https://www.googleapis.com/';
   $GAPIS_AUTH = $GAPIS . 'auth/';

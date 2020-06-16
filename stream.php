@@ -1,5 +1,10 @@
 <?php
-$id = $_GET['id'];
+if (strlen($_GET['id'] == 33) {
+	$id = $_GET['id'];
+} else {
+	http_response_code(404);
+	die('Invalid ID');
+}
 $ch = curl_init("https://drive.google.com/uc?id=$id&authuser=0&export=download");
 curl_setopt_array($ch, array(
   CURLOPT_CUSTOMREQUEST => 'POST',
@@ -27,7 +32,7 @@ if($response_code == '200') {
   if(isset($object->downloadUrl)) {
     header('Location:'.$object->downloadUrl);
   } else {
-	  http_response(404);
+	  http_response_code(404);
 	  die('Not found');
   }
 } else {
